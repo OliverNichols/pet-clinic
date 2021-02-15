@@ -1,5 +1,4 @@
 # pet-clinic   
-
 ## Contents
 * [Introduction](#introduction) 
   * [Objective](#objective)
