@@ -10,9 +10,12 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- bash: bash pipeline/dependencies.sh && ls && pwd
+- bash: bash pipeline/dependencies.sh 
   displayName: 'Running dependencies script'
-- bash: ls && pwd && bash pipeline/test.sh
-  displayName: 'Running tests'
-
+#- bash: ls && pwd && bash pipeline/test.sh
+#  displayName: 'Running tests'
+- bash: bash pipeline/build.sh
+  displayName: 'Running build script'
+#- bash: bash pipeline/push.sh
+#  displayName: 'Running push script'
 
