@@ -1,15 +1,13 @@
 #!/bin/bash
 sudo apt update
-curl https://get.docker.com | sudo bash
-sudo usermod -aG docker $(whoami)
-newgrp docker
+sudo apt install chromium-chromedriver -y
+export CHROME_BIN=/usr/bin/chromium-browser
 sudo apt install npm -y
-sudo npm install -g @angular/cli@8.0.3 -y
-git clone https://github.com/spring-petclinic/spring-petclinic-angular.git
+sudo npm install -g @angular/cli@8
+git clone https://github.com/OliverNichols/spring-petclinic-angular
 cd spring-petclinic-angular
-npm install --save-dev @angular/cli@8.0.3 -y
+npm install --save-dev @angular/cli@8
 sudo npm install
-docker run -d -p 9966:9966 springcommunity/spring-petclinic-rest
 sudo npm install -g n
 sudo n install v12.8.1
 PATH="$PATH"
