@@ -12,4 +12,6 @@ pool:
 steps:
 - bash: bash pipeline/dependencies.sh
   displayName: 'Running dependencies script'
+- bash: echo "Should end here !!!"
+  displayName: 'one line'
 
