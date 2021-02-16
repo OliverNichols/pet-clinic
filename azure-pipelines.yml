@@ -11,8 +11,5 @@ pool:
 
 steps:
 - script: echo Hello, world!
-  displayName: 'Run a one-line script'
+  displayName: 'Updated this one line, hello world!'
 
-- script: |
-    echo Testing echo
-  displayName: 'Run a multi-line script'
