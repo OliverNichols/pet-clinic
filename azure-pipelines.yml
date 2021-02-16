@@ -10,8 +10,12 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- bash: bash pipeline/dependencies.sh
-  displayName: 'Running dependencies script'
-- bash: bash pipeline/test.sh
-  displayName: 'Running tests'
+#- bash: bash pipeline/dependencies.sh
+#  displayName: 'Running dependencies script'
+#- bash: bash pipeline/test.sh
+#  displayName: 'Running tests'
+- bash: export yusuf="testing variable" && mkdir abc 
+  displayName: 'setting variable' 
+- bash: echo $yusuf && ls
+  displayName: 'checking' 
 
