@@ -31,4 +31,5 @@ rm terraform_*_linux_*.zip
 # rm -rf node_modules/ package-lock.json
 
 # Install docker
-docker --version || curl https://get.docker.com | sudo bash && sudo usermod -aG docker $USER && newgrp docker
+docker --version || curl https://get.docker.com | sudo bash 
+sudo usermod -aG docker $USER && newgrp docker
