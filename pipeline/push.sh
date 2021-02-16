@@ -2,6 +2,8 @@
 # Assumes image has been built as per ./build.sh
 # Need to have nexus-vm set up in /etc/hosts
 
+cd spring-petclinic-angular
+
 image_repo="nexus-vm:8082" # ip or host name (e.g. docker.io)
 
 # Copy required configs and restart docker
