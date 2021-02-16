@@ -10,6 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
+- bash: echo "It works"
   displayName: 'Updated this one line, hello world!'
 
