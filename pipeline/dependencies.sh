@@ -13,6 +13,7 @@ sudo apt install chromium-chromedriver -y
 sudo apt install unzip wget -y
 
 # Install npm dependencies
+sudo npm install
 sudo npm install -g @angular/cli@8
 npm install --save-dev @angular/cli@8
 
