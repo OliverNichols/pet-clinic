@@ -12,6 +12,6 @@ pool:
 steps:
 - bash: bash pipeline/dependencies.sh
   displayName: 'Running dependencies script'
-- bash: docker ps
-  displayName: 'one line'
+- bash: bash pipeline/test.sh
+  displayName: 'Running tests'
 
