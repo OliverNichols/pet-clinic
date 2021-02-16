@@ -3,7 +3,7 @@
 git_repo="https://github.com/pet-clinic-team-3/spring-petclinic-angular.git" # repo url for front-end
 
 # Install apt dependencies
-sudo apt update && sudo apt upgrade -y
+sudo apt update
 sudo apt install npm -y
 sudo apt install chromium-chromedriver -y
 sudo apt install unzip wget -y
