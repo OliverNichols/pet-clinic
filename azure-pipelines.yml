@@ -24,4 +24,4 @@ steps:
     azureSubscription: 'Free Trial(dd51af7d-c19d-48b7-b874-dd60c8bdc78c)'
     KeyVaultName: 'petclinic-secrets'
     SecretsFilter: '*'
-    RunAsPreJob: true
+    RunAsPreJob: true 
