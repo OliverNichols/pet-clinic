@@ -10,6 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- bash: bash dependencies.sh
+- bash: bash pipeline/dependencies.sh
   displayName: 'Running dependencies script'
 
