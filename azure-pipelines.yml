@@ -20,7 +20,9 @@ steps:
 #- bash: grep -qxF "$nexusip nexus-vm" /etc/hosts || echo "$nexusip nexus-vm" | sudo tee -a /etc/hosts && bash pipeline/push.sh
 #  displayName: 'Running push script'
 - script: echo $(nexusip) > secret.txt
-- publish: secret.txt
+  displayName: echoing nexusip to secret.txt
+- bash: cat secret.txt
+  displayName: checking key
 - task: AzureKeyVault@1
   inputs:
     azureSubscription: 'Free Trial(dd51af7d-c19d-48b7-b874-dd60c8bdc78c)'
