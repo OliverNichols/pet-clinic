@@ -12,6 +12,9 @@ sudo npm uninstall -g angular-cli @angular/cli
 sudo npm cache clean
 sudo npm install -g @angular/cli@latest
 
+sudo npm install -g n
+sudo n install v12.8.1
+
 npm install --save-dev @angular/cli@latest
 
 # Clone down repo
