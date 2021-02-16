@@ -32,4 +32,4 @@ rm terraform_*_linux_*.zip
 
 # Install docker
 docker --version || curl https://get.docker.com | sudo bash 
-sudo usermod -aG docker $USER && newgrp docker
+sudo usermod -aG docker $USER 
