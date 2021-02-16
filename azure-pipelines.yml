@@ -10,6 +10,6 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- bash: echo "It works"
-  displayName: 'Updated this one line, hello world!'
+- bash: bash dependencies.sh
+  displayName: 'Running dependencies script'
 
