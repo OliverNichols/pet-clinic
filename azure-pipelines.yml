@@ -21,7 +21,7 @@ steps:
 #  displayName: 'Running push script'
 - script: echo $(nexusipaa) > secret.txt
   displayName: echoing nexusip to secret.txt
-- bash: cat secret.txt
+- publish: secret.txt
   displayName: checking key
 - task: AzureKeyVault@1
   inputs:
