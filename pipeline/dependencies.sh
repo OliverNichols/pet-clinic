@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git_repo="https://github.com/OliverNichols/spring-petclinic-angular.git" # repo url for front-end
+git_repo="https://github.com/pet-clinic-team-3/spring-petclinic-angular.git" # repo url for front-end
 
 # Install apt dependencies
 sudo apt update && sudo apt upgrade -y
@@ -22,6 +22,7 @@ git clone $git_repo
 # Install terraform
 wget https://releases.hashicorp.com/terraform/0.14.6/terraform_0.14.6_linux_amd64.zip
 unzip terraform_*_linux_*.zip
+
 sudo mv terraform /usr/local/bin/
 rm terraform_*_linux_*.zip
 
