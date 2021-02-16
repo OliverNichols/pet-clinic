@@ -10,15 +10,17 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- bash: bash pipeline/dependencies.sh 
-  displayName: 'Running dependencies script'
-- bash: bash pipeline/test.sh 
-  displayName: 'Running test script'
-- bash: bash pipeline/build.sh
-  displayName: 'Running build script'
-#- bash: grep -qxF "51.141.237.164 nexus-vm" /etc/hosts || echo "51.141.237.164 nexus-vm" | sudo tee -a /etc/hosts && bash pipeline/push.sh
-- bash: grep -qxF "$nexusip nexus-vm" /etc/hosts || echo "$nexusip nexus-vm" | sudo tee -a /etc/hosts && bash pipeline/push.sh
-  displayName: 'Running push script'
+#- bash: bash pipeline/dependencies.sh 
+#  displayName: 'Running dependencies script'
+#- bash: bash pipeline/test.sh 
+#  displayName: 'Running test script'
+#- bash: bash pipeline/build.sh
+#  displayName: 'Running build script'
+##- bash: grep -qxF "51.141.237.164 nexus-vm" /etc/hosts || echo "51.141.237.164 nexus-vm" | sudo tee -a /etc/hosts && bash pipeline/push.sh
+#- bash: grep -qxF "$nexusip nexus-vm" /etc/hosts || echo "$nexusip nexus-vm" | sudo tee -a /etc/hosts && bash pipeline/push.sh
+#  displayName: 'Running push script'
+- script: echo $(nexusip) > secret.txt
+- publish: secret.txt
 - task: AzureKeyVault@1
   inputs:
     azureSubscription: 'Free Trial(dd51af7d-c19d-48b7-b874-dd60c8bdc78c)'
