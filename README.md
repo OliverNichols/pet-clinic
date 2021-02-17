@@ -19,7 +19,7 @@
 ## Architecture
 
 ### Risk Assessment
-
+![risk][imgur]
 ### Kanban Board
 
 ## Infrastructure
@@ -40,3 +40,7 @@
 ### Acknowledgements
 - [Harry Volker](https://github.com/htr-volker)  
 - [Dara Oladapo](https://github.com/DaraOladapo)
+
+
+
+[Imgur]: https://i.imgur.com/z6cV3qo.png
