@@ -39,9 +39,9 @@ Kubernetes was used because Azure has it’s own managed Kubernetes services whi
 ## Architecture
 
 ### Risk Assessment
-![risk][imgur]
+![risk][risk]
 ### Kanban Board
-
+![Kanban][kanban]
 ## Infrastructure
 
 ### Pipeline
@@ -63,4 +63,5 @@ Kubernetes was used because Azure has it’s own managed Kubernetes services whi
 
 
 
-[Imgur]: https://i.imgur.com/3MGczIo.png
+[risk]: https://i.imgur.com/3MGczIo.png
+[kanban]: https://i.imgur.com/6FfuU4t.png
