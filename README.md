@@ -19,7 +19,7 @@ Further requirements include:
 
 * Multiple environment support
 * Justify tool use
-*Show cost analysis
+* Show cost analysis
 
 
 ### Proposal
