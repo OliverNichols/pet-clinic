@@ -24,5 +24,5 @@ az vm open-port -n $vm_name -g $group_name --port 8083 --priority 1003
 public_ip="$(az vm show -d -g $group_name -n $vm_name --query publicIps -o tsv)"
 
 # Add entry for nexus-vm to hosts
-grep -qxF "$public_ip nexus-vm" /etc/hosts || sudo echo "$public_ip nexus-vm" | sudo tee -a /etc/hosts
+grep -qxF "$public_ip nexus-vm" /etc/hosts || echo "$public_ip nexus-vm" | sudo tee -a /etc/hosts
 echo "$public_ip nexus-vm"

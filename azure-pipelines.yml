@@ -1,0 +1,29 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- feature-dependencies-PipelinesFile
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- bash: bash pipeline/dependencies.sh 
+  displayName: 'Running dependencies script'
+- bash: bash pipeline/test.sh 
+  displayName: 'Running test script'
+- bash: bash pipeline/build.sh
+  displayName: 'Running build script'
+#- bash: grep -qxF "51.141.237.164 nexus-vm" /etc/hosts || echo "51.141.237.164 nexus-vm" | sudo tee -a /etc/hosts && bash pipeline/push.sh
+- bash: grep -qxF "$(nexusip) nexus-vm" /etc/hosts || echo "$(nexusip) nexus-vm" | sudo tee -a /etc/hosts && bash pipeline/push.sh
+  displayName: 'Running push script'
+- task: AzureKeyVault@1
+  inputs:
+    azureSubscription: 'Free Trial(dd51af7d-c19d-48b7-b874-dd60c8bdc78c)'
+    KeyVaultName: 'petclinic-secrets'
+    SecretsFilter: '*'
+    RunAsPreJob: true 
+
+
