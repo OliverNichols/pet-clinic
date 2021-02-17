@@ -1,10 +1,5 @@
 #!/bin/bash
 
-git_repo="https://github.com/pet-clinic-team-3/pet-clinic.git" # repo url for front-end
-
-# Clone down repo
-git clone $git_repo
-
 # Install apt dependencies
 sudo apt update -y
 sudo apt install npm -y
