@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: petclinic-backend
+spec:
+  selector:
+    app: petclinic-backend
+  ports:
+  - protocol: TCP
+    port: 9966
+    targetPort: 9966
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: petclinic-backend
+  labels:
+    app: petclinic-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: petclinic-backend
+  template:
+    metadata:
+      labels:
+        app: petclinic-backend
+    spec:
+      containers:
+        - name: petclinic-backend
+          image: springcommunity/spring-petclinic-rest
+          ports:
+          - containerPort: 9966
