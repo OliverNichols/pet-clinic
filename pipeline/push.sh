@@ -3,7 +3,7 @@
 # Need to have nexus-vm set up in /etc/hosts
 
 image_repo="nexus-vm:8082" # ip or host name (e.g. docker.io)
-path_to_defaults="pipeline/nexus/config"
+path_to_defaults="pet-clinic/pipeline/nexus/config"
 
 # Copy required configs and restart docker
 sudo cp $path_to_defaults/docker /etc/default/docker
