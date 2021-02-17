@@ -16,8 +16,8 @@ steps:
   displayName: 'Running test script'
 - bash: bash pipeline/build.sh
   displayName: 'Running build script'
-- bash: grep -qxF "51.141.237.164 nexus-vm" /etc/hosts || echo "51.141.237.164 nexus-vm" | sudo tee -a /etc/hosts && bash pipeline/push.sh
-#- bash: grep -qxF "$nexusip nexus-vm" /etc/hosts || echo "$nexusip nexus-vm" | sudo tee -a /etc/hosts && bash pipeline/push.sh
+#- bash: grep -qxF "51.141.237.164 nexus-vm" /etc/hosts || echo "51.141.237.164 nexus-vm" | sudo tee -a /etc/hosts && bash pipeline/push.sh
+- bash: grep -qxF "$(nexusip) nexus-vm" /etc/hosts || echo "$(nexusip) nexus-vm" | sudo tee -a /etc/hosts && bash pipeline/push.sh
   displayName: 'Running push script'
 - task: AzureKeyVault@1
   inputs:
