@@ -41,7 +41,7 @@ Docker was used to build and push the application. Similar to the choice of Karm
 
 Terraform was selected because it can do all the infrastructure on any cloud platform in one language. It is also really easy to make changes to and will let you know exactly what it will change which is extremely useful for such an experimental project.
 
-Kubernetes was used because Azure has its own managed Kubernetes services (AKS) which help configure and deploy our clusters. This combined with its integratability with Docker, its easy scalability, and its portability made it the ideal choice for the project.
+Kubernetes was used because Azure has its own managed Kubernetes services (AKS) which helps configure and deploy our clusters. This combined with its integratability with Docker, its easy scalability, and its portability made it the ideal choice for the project.
 
 ## Architecture
 
