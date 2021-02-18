@@ -12,6 +12,15 @@ echo "Running terraform init"
 
 terraform init
 
+echo "Running terraform destroy"
+
+terraform destroy -var serviceprinciple_id=$SERVICE_PRINCIPAL \
+-var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
+-var tenant_id=$TENANT_ID \
+-var subscription_id=$SUBSCRIPTION \
+-var ssh_key="$SSH_KEY" \
+-auto-approve
+
 echo "Running terraform plan"
 
 terraform plan -var serviceprinciple_id=$SERVICE_PRINCIPAL \
@@ -21,32 +30,32 @@ terraform plan -var serviceprinciple_id=$SERVICE_PRINCIPAL \
 -var ssh_key="$SSH_KEY" \
 -auto-approve
 
-echo "Running terraform import 1"
+#echo "Running terraform import 1"
+#
+#terraform import -var serviceprinciple_id=$SERVICE_PRINCIPAL \
+#-var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
+#-var tenant_id=$TENANT_ID \
+#-var subscription_id=$SUBSCRIPTION \
+#-var ssh_key="$SSH_KEY" \
+#module.cluster.azurerm_resource_group.main /subscriptions/$SUBSCRIPTION/resourceGroups/petclinic-aks
 
-terraform import -var serviceprinciple_id=$SERVICE_PRINCIPAL \
--var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
--var tenant_id=$TENANT_ID \
--var subscription_id=$SUBSCRIPTION \
--var ssh_key="$SSH_KEY" \
-module.cluster.azurerm_resource_group.main /subscriptions/$SUBSCRIPTION/resourceGroups/petclinic-aks
+#echo "Running terraform import 2"
 
-echo "Running terraform import 2"
+#terraform import -var serviceprinciple_id=$SERVICE_PRINCIPAL \
+#-var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
+#-var tenant_id=$TENANT_ID \
+#-var subscription_id=$SUBSCRIPTION \
+#-var ssh_key="$SSH_KEY" \
+#module.cluster.azurerm_kubernetes_cluster.main /subscriptions/$SUBSCRIPTION/resourceGroups/petclinic-aks/providers/Microsoft.ContainerService/managedClusters/petclinic-aks
 
-terraform import -var serviceprinciple_id=$SERVICE_PRINCIPAL \
--var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
--var tenant_id=$TENANT_ID \
--var subscription_id=$SUBSCRIPTION \
--var ssh_key="$SSH_KEY" \
-module.cluster.azurerm_kubernetes_cluster.main /subscriptions/$SUBSCRIPTION/resourceGroups/petclinic-aks/providers/Microsoft.ContainerService/managedClusters/petclinic-aks
+#echo "Running terraform apply"
 
-echo "Running terraform apply"
-
-terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL \
--var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
--var tenant_id=$TENANT_ID \
--var subscription_id=$SUBSCRIPTION \
--var ssh_key="$SSH_KEY" \
--auto-approve
+#terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL \
+#-var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
+#-var tenant_id=$TENANT_ID \
+#-var subscription_id=$SUBSCRIPTION \
+#-var ssh_key="$SSH_KEY" \
+#-auto-approve
 
 echo "Running aks"
 
