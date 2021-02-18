@@ -28,6 +28,6 @@ spec:
     spec:
       containers:
         - name: petclinic-backend
-          image: springcommunity/spring-petclinic-rest
+          image: 51.141.237.164/spring-petclinic-rest:latest
           ports:
           - containerPort: 9966
