@@ -10,6 +10,8 @@ SSH_KEY=$(cat ~/.ssh/id_rsa.pub)
 
 terraform init
 
+terraform import azurerm_resource_group.main /subscriptions/$SUBSCRIPTION/resourceGroups/petclinic-aks
+
 terraform plan -var serviceprinciple_id=$SERVICE_PRINCIPAL \
 -var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
 -var tenant_id=$TENANT_ID \
