@@ -102,7 +102,7 @@ This seperation allows developers to run dynamic tests on a development environm
 
 **Steps**
 
-Once all dependencies are installed a, and then the following steps are followed:
+Once all dependencies are installed, the following steps are followed:
 
 1. Testing: runs unit tests on the application via a headless version of karma so that the tests are automated and displayed in the build terminal.
 2. Build + Push: front-end application is built into an image via Docker and pushed to a secure private Nexus repository.
@@ -183,7 +183,7 @@ During this sprint several temporary resource groups were up for days at a time 
 
 ## Evaluation
 
-For the evaluation we will discuss what we did well, what issues we had and we can do differently in the future. 
+For the evaluation we will discuss what we did well, what issues we had, and what we can do differently in the future. 
 
 **Strength #1**  
 Overall we believe the project went fairly well. Our work methodology seemed to prove effective with each of us focusing on building specific parts for the pipeline while coming together to problem solve whenever someone has a serious blocker. Due to the testing, building and pushing stages being the quickest to set up the 2 members of the group responsible had more freedom to aid the other team members on their sections after reaching the MVP for their sections allowing for an ideal balance of group support and individual focus. Our strong communication during stand-ups and throughout the project further allowed us to have clear daily individual and group goals and an understanding of where everyone is with their work so we would know who may need assistance and who may be available to provide it.
