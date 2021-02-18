@@ -6,6 +6,7 @@
 * [Architecture](#architecture)
   * [Risk Assessment](#risk-assessment)
   * [Kanban Board](#kanban-board)
+  * [User stories](#user-stories)
 * [Infrastructure](#infrastructure)
   * [Pipeline](#pipeline)
 * [Footer](#footer)
@@ -41,7 +42,27 @@ Kubernetes was used because Azure has it’s own managed Kubernetes services whi
 ### Risk Assessment
 ![risk][risk]
 ### Kanban Board
+
+For our Kanban board we used Trello to track our project and you can see our board below.
+
 ![Kanban][kanban]
+
+Here is the link to view our board: https://trello.com/b/Uq1lOfCr/group-project-team-3
+
+The Trello board has the following sections:
+
+* Project resources- Links to parts of our projects and list of special team roles
+* User stories- What the user wants and why. This is used to not lose focus on why we have our tasks to help find solutions or alternatives when needed. Most user stories are tagged with this label but in other sections.
+* Backlog- Incomplete tasks and requirements.
+* Sprint backlog- Backlog for current sprint.
+* In progress- Tasks currently being worked on
+* Sprint 1 complete: Completed tasks
+* On hold- Tasks not to be completed for now but could be done in future.
+ 
+We also have tags to show a tasks priority (Must, Should, Could, Won’t) as well as tags for the tasks type and the task owner. 
+
+### User stories
+
 ## Infrastructure
 
 ### Pipeline
