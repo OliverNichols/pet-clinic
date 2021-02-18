@@ -44,7 +44,7 @@ terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL \
 
 
 az aks get-credentials -n petclinic-aks -g petclinic-aks --overwrite-existing
-kubectl apply -f ../k8s
+#kubectl apply -f ../k8s
 
 
 
