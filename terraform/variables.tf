@@ -38,7 +38,3 @@ variable "kubernetes_version" {
 variable "ssh_key" {
 
 }
-
-variable "resource_group" {
-  
-}
