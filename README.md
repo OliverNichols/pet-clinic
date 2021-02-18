@@ -31,7 +31,7 @@ Further requirements include:
 
 ### Proposal
 
-Our approach to this project is to utilise the azure DevOps pipeline interfaced with a Github webhook for the repository for automated continuous integration and delivery. We use this pipeline to test the application using Karma, build and push it with Docker to Nexus, set up host configuration with Terraform and deploy it with Kubernetes. 
+Our approach to this project is to utilise the Azure DevOps Pipelines interfaced with a Github webhook for the repository for automated continuous integration and delivery. We use this pipeline to test the application using Karma, build and push it with Docker to Nexus, set up host configuration with Terraform and deploy it with Kubernetes. 
 
 The reason we decided on the Azure DevOps Pipelines was because our resources were created in Azure and several `az` commands are required in our configuration and the Azure DevOps Pipelines tool is designed to be easily integrated with the Azure Portal. 
 
@@ -65,8 +65,8 @@ Here is the link to view our board: https://trello.com/b/Uq1lOfCr/group-project-
 
 The Trello board has the following sections:
 
-* Project resources- Links to parts of our project and list of special team roles
-* User stories- What the users want and why. This is used to not lose focus of why we have our tasks to help find solutions or alternatives when needed. These user stories are treated the same as other requirements, and so are moved around during sprints (but are tagged with `User Story` label).
+* Project resources - Links to parts of our project and list of special team roles
+* User stories - What the users want and why. This is used to not lose focus of why we have our tasks to help find solutions or alternatives when needed. These user stories are treated the same as other requirements, and so are moved around during sprints (but are tagged with `User Story` label).
 * Backlog - Incomplete tasks and requirements.
 * Sprint Backlog - Backlog for current sprint.
 * In Progress - Tasks currently being worked on.
