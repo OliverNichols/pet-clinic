@@ -85,7 +85,19 @@ Below you can see a table of the major tasks and their relative effort.
 
 ### Pipeline
 
+Below is a diagram of our CI/CD pipeline.
+
 ![cicd][cicd] 
+
+The development section at the top has dual representation. During this sprint the programming and refactoring section represents the changes made to our build solution and infrastructure which during the earlier stages would trigger a webhook when pushed to Github. In this case the Trello board is our board with the work for our solution which informs the work to be done and is updated as work is done. The other representation is for the developers working on the front end of the app as in our final build the webhook is now triggered on the application repo on Github when developers make changes to it and so their development would work in much the same way.
+
+In both cases, the webhook triggers the pipeline build to begin.  There is a pipeline and webhook both for the development branch and main branch of the repository and as the diagram demonstrates the pipelines build to different environments hence the as-live and production servers. This allows developers to test the build in a separate environment before committing to the user facing one.
+
+The first step is that all dependencies for the build are installed in the pipelines temporary environment so that it can perform the other steps without further installations. Next it runs unit tests on the application via a headless version of karma so that the tests are automated and displayed in the build terminal. Once all the tests pass the front end application is then built into an image via Docker and pushed to a secure private nexus repository.  Terraform is then used to configure the hosts for the deployment and due to the nature of Terraform only changes to the configuration are implemented meaning if there are little to no changes to the configuration this step will account for that and the step finishes very quickly. Finally Kubernetes is used to deploy both the front end application the developers would be working with along with the back end API it utilises that is stored on Dockerhub to an azure hosted cluster. With Kubernetes the scaling is automated by the azure host and no additional work needs to be done to account for changes in traffic.
+
+Below you can see photos of the pipeline in progress, the test results displayed in the pipeline and application working after the pipeline build. 
+
+PLEASE INSERT IMAGES
 
 ## Cost analysis
 
