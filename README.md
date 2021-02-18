@@ -6,7 +6,6 @@
 * [Architecture](#architecture)
   * [Risk Assessment](#risk-assessment)
   * [Kanban Board](#kanban-board)
-  * [User stories](#user-stories)
   * [Burndown](#Burndown)
 * [Infrastructure](#infrastructure)
   * [Pipeline](#pipeline)
@@ -68,8 +67,6 @@ The Trello board has the following sections:
  
 We also have tags to show a tasks priority (Must, Should, Could, Won’t) as well as tags for the tasks type and the task owner. 
 
-### User stories
-
 ### Burndown
 
 Here you can see our Burndown chart.
@@ -97,9 +94,13 @@ In both cases, the webhook triggers the pipeline build to begin.  There is a pip
 
 The first step is that all dependencies for the build are installed in the pipelines temporary environment so that it can perform the other steps without further installations. Next it runs unit tests on the application via a headless version of karma so that the tests are automated and displayed in the build terminal. Once all the tests pass the front end application is then built into an image via Docker and pushed to a secure private nexus repository.  Terraform is then used to configure the hosts for the deployment and due to the nature of Terraform only changes to the configuration are implemented meaning if there are little to no changes to the configuration this step will account for that and the step finishes very quickly. Finally Kubernetes is used to deploy both the front end application the developers would be working with along with the back end API it utilises that is stored on Dockerhub to an azure hosted cluster. With Kubernetes the scaling is automated by the azure host and no additional work needs to be done to account for changes in traffic.
 
-Below you can see photos of the actual pipeline, the test results displayed in the pipeline and the application working after the pipeline build. 
+Below you can see photos of the actual pipeline, the test results displayed in the pipeline and the application working after the pipeline build (the final image demonstrates it working in tandem with the backend. 
 
-PLEASE INSERT IMAGES
+![pipeline][pipeline]
+
+![front][front]
+
+![back][back]
 
 ### Refactoring
 
@@ -208,3 +209,6 @@ There are quite a few other improvements we can make in future sprints. The firs
 [pipecost]: https://i.imgur.com/eFasIWn.png
 [kubecost]: https://i.imgur.com/1weQx8U.png 
 [cicd]: https://github.com/pet-clinic-team-3/pet-clinic/blob/feature-readme/images/pipeline.png
+[pipeline]: https://i.imgur.com/2qq6Sg8.png
+[front]: https://i.imgur.com/LPE1ds4.png
+[back]: https://i.imgur.com/2poQ7ZR.png
