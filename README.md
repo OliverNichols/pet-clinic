@@ -15,6 +15,7 @@
   * [Virtual machines](#Virtual-machines)
   * [Infrastructure](#Infrastructure) 
   * [Final costs](#Final-costs)
+* [Evaluation](#Evaluation)
 * [Footer](#footer)
 
 ## Introduction
@@ -96,7 +97,7 @@ In both cases, the webhook triggers the pipeline build to begin.  There is a pip
 
 The first step is that all dependencies for the build are installed in the pipelines temporary environment so that it can perform the other steps without further installations. Next it runs unit tests on the application via a headless version of karma so that the tests are automated and displayed in the build terminal. Once all the tests pass the front end application is then built into an image via Docker and pushed to a secure private nexus repository.  Terraform is then used to configure the hosts for the deployment and due to the nature of Terraform only changes to the configuration are implemented meaning if there are little to no changes to the configuration this step will account for that and the step finishes very quickly. Finally Kubernetes is used to deploy both the front end application the developers would be working with along with the back end API it utilises that is stored on Dockerhub to an azure hosted cluster. With Kubernetes the scaling is automated by the azure host and no additional work needs to be done to account for changes in traffic.
 
-Below you can see photos of the pipeline in progress, the test results displayed in the pipeline and application working after the pipeline build. 
+Below you can see photos of the actual pipeline, the test results displayed in the pipeline and the application working after the pipeline build. 
 
 PLEASE INSERT IMAGES
 
@@ -162,9 +163,25 @@ The reason for the considerably higher cost for this sprint is because this was 
 
 During this sprint several temporary resource groups were up for days at a time which ran up our costs more than necessary. Going forward at the end of each day after our files are pushed to Github  all resources within these temporary groups will be deleted to save money but also to keep the group open so there is one cost analyses for each pipeline stage per sprint.
 
+
+## Evaluation
+
+For the evaluation we will discuss what we did well, what issues we had and we can do differently in the future. 
+
+Overall we believe the project went fairly well. Our work methodology seemed to prove effective with each of us focusing on building specific parts for the pipeline while coming together to problem solve whenever someone has a serious blocker. Due to the testing, building and pushing stages being the quickest to set up the 2 members of the group responsible had more freedom to aid the other team members on their sections after reaching the MVP for their sections allowing for an ideal balance of group support and individual focus. Our strong communication during stand ups and project further allowed us to have clear daily individual and group goals and an understanding of where everyone is with their work so we would know who may need assistance and who may be available to provide it.
+
+We also demonstrated strong of use of tools with which we had little to no familiarity. The Java application we deployed was not only a foreign application to us but a language most of the team was not familiar with. We were all able to utilise our tools with the application and some of us even made alterations to the Java scripts themselves to better integrate them with our DevOps technologies. As for the technologies we used, with the exception of Docker they were all tools we either had little or no experience with and yet we all utilised them to create an effective deployment.
+
+We did struggle however with some of our technologies. Integrating Kubernetes and Terraform into one step proved challenging and ultimately too time consuming so in the end we implemented them as separate pipeline steps working one after the other instead of in unison. This isn’t a huge issue as they both performed their roles but it does mean that the pipeline takes longer to build and more would need to be done to account for changes to one or the other. We had similar struggles with implementing Nexus but did eventually get it working with the project.
+
+A tool that was abandoned completely was Protractor which was to be used for end to end testing. This ultimately proved too troublesome to implement in this sprint and as such our end to end testing had to be done within our testing environment directly after the development pipeline builds which even though it would be prudent to test the application works properly upon each build, specifically testing integration functionality with the API each time does cost extra time between setting up the development pipeline and feeling confident in pushing to main.
+
+Another issue we faced was in knowing when something was ready to integrate with the pipeline. For our Kubernetes and Terraform we tried to get them optimised before integrating into the pipeline which caused pressure on our time constraints. This is because we didn’t begin implementation until our last day causing worry we would not have a fully functional product by the end of the sprint. We should have began implementing them upon reaching an MVP so that we would have a fully functional pipeline before beginning optimisation which is definitely what we do in future. 
+
+There are quite a few other improvements we can make in future sprints. The first improvement would be implementing the end to end testing into pipeline to further automate the process. Something else we could’ve done differently is keep better track of our costs at the start of the project. While some of us did have budgets set to alert us of costs we were not deleting our resources in our temporary resource groups at the end of the day to save on costs and when we exceeded our budgets we did not set new ones to track future costs and did not often discuss strategies or plan to reduce our costs which will we have to do in future.
+
 ## Footer
 
-### Future Improvements
 
 ### Contributors
 - [Oliver Nichols](https://github.com/OliverNichols)  
