@@ -134,6 +134,12 @@ The total cost for infrastructure for this sprint is £18.05 currently and is ex
 
 ### Final costs
 
+The final costs for this sprint are £27.13 currently and are predicted to be £30. The predicted costs for the next sprint are expected to be £19.56 or £27.06 with paying for the pipeline. Predicting future costs will be significantly easier moving forward especially in regard to our infrastructure groups as azure offers it’s own predicted cost forecasts for any resource groups open longer than 8 days so going from our next sprint we should have automated predictions that we can use to aid in formulating our own. 
+
+The reason for the considerably higher cost for this sprint is because this was the initial set up sprint requiring a lot of temporary resources in order to design and build the infrastructure. In all likelihood there will still be more temporary resources used in future however with the exception of end to end testing any likely builds needed in future will be built on top of our pre existing pipeline stages meaning that they will either be tested directly on the pipeline or that building times for each resource will be extremely short and it will be rare that resource groups created will exist long enough to run up costs higher than a few pennies.  
+
+During this sprint several temporary resource groups were up for days at a time which ran up our costs more than necessary. Going forward at the end of each day after our files are pushed to Github  all resources within these temporary groups will be deleted to save money but also to keep the group open so there is one cost analyses for each pipeline stage per sprint.
+
 ## Footer
 
 ### Future Improvements
