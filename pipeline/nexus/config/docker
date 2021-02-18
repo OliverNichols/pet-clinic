@@ -1,0 +1,1 @@
+DOCKER_OPTS=”$DOCKER_OPTS –insecure-registry=["nexus-vm:8082", "nexus-vm:8083"]
