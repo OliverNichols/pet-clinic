@@ -28,6 +28,6 @@ spec:
     spec:
       containers:
       - name: petclinic-frontend
-        image: nasislam5/petclinic-frontend:v4
+        image: 51.141.237.164/spring-petclinic-angular:latest
         ports:
         - containerPort: 8080
