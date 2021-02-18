@@ -85,6 +85,7 @@ Below you can see a table of the major tasks and their relative effort.
 
 ### Pipeline
 
+![cicd][cicd] 
 
 ## Cost analysis
 
@@ -168,3 +169,4 @@ During this sprint several temporary resource groups were up for days at a time 
 [terracost]: https://i.imgur.com/erN12NJ.png
 [pipecost]: https://i.imgur.com/eFasIWn.png
 [kubecost]: https://i.imgur.com/1weQx8U.png 
+[cicd]: https://github.com/pet-clinic-team-3/pet-clinic/blob/feature-readme/images/pipeline.png
