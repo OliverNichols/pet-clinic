@@ -47,5 +47,9 @@ sudo az aks get-credentials -n petclinic-aks -g petclinic-aks --overwrite-existi
 sudo chown -R $USER /home/vsts/.kube
 kubectl apply -f ../k8s
 
+sleep 15
+
+kubectl get svc 
+
 
 
