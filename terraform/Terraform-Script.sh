@@ -12,15 +12,6 @@ echo "Running terraform init"
 
 terraform init
 
-echo "Running terraform plan"
-
-terraform plan -var serviceprinciple_id=$SERVICE_PRINCIPAL \
--var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
--var tenant_id=$TENANT_ID \
--var subscription_id=$SUBSCRIPTION \
--var ssh_key="$SSH_KEY" \
--auto-approve
-
 echo "Running terraform import 1"
 
 terraform import -var serviceprinciple_id=$SERVICE_PRINCIPAL \
@@ -38,6 +29,15 @@ terraform import -var serviceprinciple_id=$SERVICE_PRINCIPAL \
 -var subscription_id=$SUBSCRIPTION \
 -var ssh_key="$SSH_KEY" \
 module.cluster.azurerm_kubernetes_cluster.main /subscriptions/$SUBSCRIPTION/resourceGroups/petclinic-aks/providers/Microsoft.ContainerService/managedClusters/petclinic-aks
+
+echo "Running terraform plan"
+
+terraform plan -var serviceprinciple_id=$SERVICE_PRINCIPAL \
+-var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
+-var tenant_id=$TENANT_ID \
+-var subscription_id=$SUBSCRIPTION \
+-var ssh_key="$SSH_KEY" \
+-auto-approve
 
 echo "Running terraform apply"
 
