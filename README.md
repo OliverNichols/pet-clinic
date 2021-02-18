@@ -205,7 +205,7 @@ There are quite a few other improvements we can make in future sprints. The firs
 
 
 [risk]: https://i.imgur.com/3MGczIo.png
-[risk2]: https://i.imgur.com/L7gEkyK.png
+[risk2]: https://i.imgur.com/R4i43u7.png
 [kanban]: https://i.imgur.com/6FfuU4t.png
 [burndown]: https://i.imgur.com/zZntHmh.png
 [bdtable]: https://i.imgur.com/5Jru4fm.png
