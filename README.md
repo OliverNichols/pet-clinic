@@ -8,6 +8,7 @@
   * [Kanban Board](#kanban-board)
   * [User stories](#user-stories)
   * [Burndown](#Burndown)
+  * [Cost analysis](#Cost-analysis)
 * [Infrastructure](#infrastructure)
   * [Pipeline](#pipeline)
 * [Footer](#footer)
@@ -76,6 +77,29 @@ Below you can see a table of the major tasks and their relative effort.
 
 ![bdtable][bdtable]
 
+
+### Cost analysis
+
+This section will focus on the costs of our project so far as well as the project costs moving forward. 
+
+Below are all the resource groups needed to manage virtual machines and their costs from the start of the project until 17.02.2021.
+
+![testcost][testcost]
+
+![buildcost][buildcost]
+
+![nexuscost][nexuscost]
+
+![kubevmcost][kubevmcost]
+
+![terracost][terracost]
+
+<end of vm resources>
+ 
+![pipecost][pipecost]
+
+![kubecost][kubecost]
+
 ## Infrastructure
 
 ### Pipeline
@@ -101,3 +125,10 @@ Below you can see a table of the major tasks and their relative effort.
 [kanban]: https://i.imgur.com/6FfuU4t.png
 [burndown]: https://i.imgur.com/zZntHmh.png
 [bdtable]: https://i.imgur.com/5Jru4fm.png
+[testcost]: https://i.imgur.com/qEq0ZuF.png
+[buildcost]: https://i.imgur.com/DxaA1yi.png
+[nexuscost]: https://i.imgur.com/H4huVmO.png
+[kubevmcost]: https://i.imgur.com/Qg8XXdg.png
+[terracost]: https://i.imgur.com/erN12NJ.png
+[pipecost]: https://i.imgur.com/eFasIWn.png
+[kubecost]: https://i.imgur.com/1weQx8U.png 
