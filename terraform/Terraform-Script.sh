@@ -17,7 +17,7 @@ terraform plan -var serviceprinciple_id=$SERVICE_PRINCIPAL \
 -var ssh_key="$SSH_KEY" \
 -auto-approve
 
-terraform import module.cluster.resource_group /subscriptions/$SUBSCRIPTION/resourceGroups/petclinic-aks
+terraform import cluster.resource_group /subscriptions/$SUBSCRIPTION/resourceGroups/petclinic-aks
 
 terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL \
 -var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
