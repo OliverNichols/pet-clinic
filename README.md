@@ -10,6 +10,7 @@
   * [Burndown](#Burndown)
 * [Infrastructure](#infrastructure)
   * [Pipeline](#pipeline)
+  * [Refactoring](#Refactoring)
 * [Cost analysis](#Cost-analysis)
   * [Virtual machines](#Virtual-machines)
   * [Infrastructure](#Infrastructure) 
@@ -98,6 +99,14 @@ The first step is that all dependencies for the build are installed in the pipel
 Below you can see photos of the pipeline in progress, the test results displayed in the pipeline and application working after the pipeline build. 
 
 PLEASE INSERT IMAGES
+
+### Refactoring
+
+In this section we will briefly discuss some of the improvements made throughout the sprint.
+
+The first change made for this project is switching our webhook to trigger on the application Github repository instead of our build. This meant that changes from the developers would trigger the webhook making it more realistic to the goals of the project. This also made the pipeline stages simpler as less directory changing is required with the application being the heart of the environment. Refactoring of our pipeline scripts were required to accommodate this change however the change has allowed for them to be made slightly simpler than the originals. 
+
+The next change was incorporating nexus into the project. Initially we used Dockerhub to store our images however Dockerhub repositories are typically public and additionally cannot be customised whereas nexus can. This did require significant refactoring for our Kubernetes setup as well as creating a nexus host but ultimately gave us more control over our repository and security making it an ideal change. 
 
 ## Cost analysis
 
