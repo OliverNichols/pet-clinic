@@ -14,9 +14,8 @@ terraform plan -var serviceprinciple_id=$SERVICE_PRINCIPAL \
 -var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
 -var tenant_id=$TENANT_ID \
 -var subscription_id=$SUBSCRIPTION \
--var ssh_key="$SSH_KEY" <<-EOF
-yes
-EOF
+-var ssh_key="$SSH_KEY" \
+-auto-approve
 
 
 
@@ -24,9 +23,8 @@ terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL \
 -var serviceprinciple_key="$SERVICE_PRINCIPAL_SECRET" \
 -var tenant_id=$TENANT_ID \
 -var subscription_id=$SUBSCRIPTION \
--var ssh_key="$SSH_KEY" <<-EOF
-yes
-EOF
+-var ssh_key="$SSH_KEY" \
+-auto-approve
 
 az aks get-credentials -n petclinic-aks -g petclinic-aks
 
