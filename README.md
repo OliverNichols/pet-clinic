@@ -8,9 +8,12 @@
   * [Kanban Board](#kanban-board)
   * [User stories](#user-stories)
   * [Burndown](#Burndown)
-  * [Cost analysis](#Cost-analysis)
 * [Infrastructure](#infrastructure)
   * [Pipeline](#pipeline)
+* [Cost analysis](#Cost-analysis)
+  * [Virtual machines](#Virtual-machines)
+  * [Infrastructure](#Infrastructure) 
+  * [Final costs](#Final-costs)
 * [Footer](#footer)
 
 ## Introduction
@@ -78,31 +81,58 @@ Below you can see a table of the major tasks and their relative effort.
 ![bdtable][bdtable]
 
 
-### Cost analysis
-
-This section will focus on the costs of our project so far as well as the project costs moving forward. 
-
-Below are all the resource groups needed to manage virtual machines and their costs from the start of the project until 17.02.2021.
-
-![testcost][testcost]
-
-![buildcost][buildcost]
-
-![nexuscost][nexuscost]
-
-![kubevmcost][kubevmcost]
-
-![terracost][terracost]
-
-<end of vm resources>
- 
-![pipecost][pipecost]
-
-![kubecost][kubecost]
-
 ## Infrastructure
 
 ### Pipeline
+
+
+## Cost analysis
+
+This section will focus on the costs of our project so far as well as the project costs moving forward. 
+
+### Virtual machines
+
+Below are all the resource groups needed to manage virtual machines and their costs from the start of the project until 17.02.2021. These are also our temporary resources. Virtual machines were needed to provide fresh environments for each build attempt in order to mimic the pipelines environment so that the entire process for each of the stages can be built for automation. 
+
+![testcost][testcost]
+
+This was the cost of running the tests on virtual machines for the project (£0.85). Even though this data goes until February 17th the data ends at the 16th because that was when testing was completed and implemented into the pipeline and so the resource group deleted. As a result there are no projected costs for this group however for future sprints end to end testing could be implemented that will run up similar costs as the same size virtual machines (B2s) will need to be used to handle the applications and CPU usage needed for testing. So projected testing cost for the next sprint is £0.85.
+
+![buildcost][buildcost]
+
+This was the cost of running the build and push stages for the project (£4.85). As this has now been completed and implemented into the pipeline the resource group has been deleted and there are no projected future costs.
+
+![kubevmcost][kubevmcost]
+
+This was the cost of the Kubernetes virtual machines (£2.64). At time of writing Azure has no calculated the cost for 18.02 which is the final day this group needed to remain active as such the projected cost for this resource group for this sprint is £3.00 maximum and there are no projected costs for future sprints as it is integrated into the pipeline.
+
+![terracost][terracost]
+
+This was the total costs for Terraform. The cost for the virtual machine resource group is £0.74. As this is now also done through the pipeline the resource group is deleted and there are no projected costs. 
+
+The total costs of virtual machines for this sprint is £9.08 current and is projected to be £9.44 For the next sprint this cost is expected to be the end to end testing costs for a total of £0.85.
+
+### Infrastructure
+
+This section covers the costs of running the infrastructure moving forward. These can be considered our permanent resources.
+
+From the final image in the above section you can see the costs for running the terraform configuration is £1.42. This was the running cost for 2 days giving us £0.71 per day. There is one day left in the first sprint at time of writing so the projected cost for this sprint is £2.13. For future sprints this should remain consistent giving us a projected cost of £4.97.
+
+![pipecost][pipecost]
+
+As you can see from the above picture Microsoft's azure pipelines allow for 1 free job so the cost of running the pipeline is nothing. In case of multiple projects being required the projected sprint costs of using a Microsoft-hosted job is approximately £7.50. 
+
+![nexuscost][nexuscost]
+
+This was the cost of running nexus as our docker repository(£3.22). The reason for the low initial cost followed by a consistent incline is because the size was upscaled significantly. As this needs to be run persistently to store the docker images the costs are projected to remain consistent at around 60p per day. So for the end of this sprint the final cost should be approximately £3.82. For a future week long sprint the projected costs for this resource is £4.80.
+
+![kubecost][kubecost]
+
+The cost of running our Kubernetes was £13.41. This is by far the most expensive resource as an expensive virtual machine (D series) is automatically put in place to host the cluster.  The per day costs have reduced towards the end of the sprint as experimentation was significantly heavier towards the beginning. Due to the fluctuation in cost per day we have decided to take the final day cost as a predictive model as that is the setup closest to our final design giving us an estimated cost of £1.20 per day.  As there is one day left of the sprint yet to be analysed by Microsoft the projected cost for this sprint is £14.61. For the next sprint the projected cost is estimated to be £8.40. 
+
+The total cost for infrastructure for this sprint is £18.05 currently and is expected to be £20.56. The projected cost for the next sprint is expected to be approximately 18.71, however should our pipeline no longer be our free job  this cost will rise to 25.67.
+
+### Final costs
 
 ## Footer
 
