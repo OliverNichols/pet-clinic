@@ -44,7 +44,8 @@ terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL \
 
 sudo az login --service-principal -u $SERVICE_PRINCIPAL -p $SERVICE_PRINCIPAL_SECRET --tenant $TENANT_ID
 sudo az aks get-credentials -n petclinic-aks -g petclinic-aks --overwrite-existing
-sudo kubectl apply -f ../k8s
+sudo chown -R $USER /home/vsts/.kube
+kubectl apply -f ../k8s
 
 
 
