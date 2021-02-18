@@ -96,7 +96,7 @@ Below is a diagram of our CI/CD pipeline.
 
 ![cicd][cicd] 
 
-The development section represents the workflow of the developers, rather than our own development environment related to the infrastrcture and not the app itself. As a developer pushes changes to the `dev` branch of the [application's repo](https://github.com/pet-clinic-team-3/spring-petclinic-angular) will trigger a development version of the pipeline which has a variable IP address and some other configurations set up. If the developer pushes changes to the `main` branch of said repo then a production pipeline will trigger instead, eventually deploying onto the production environment.
+The development section represents the workflow of the developers, rather than our own development environment related to the infrastrcture and not the app itself. As a developer pushes changes to the `dev` branch of the [application's repo](https://github.com/pet-clinic-team-3/spring-petclinic-angular) it will trigger a development version of the pipeline which has a variable IP address and some other configurations set up. If the developer pushes changes to the `main` branch of said repo then a production pipeline will trigger instead, eventually deploying onto the production environment.
 
 This seperation allows developers to run dynamic tests on a development environment without risk of affecting the production environment - this was one of the requirements of the project.
 
@@ -230,7 +230,7 @@ There are quite a few other improvements we can make in future sprints. The firs
 [terracost]: https://i.imgur.com/erN12NJ.png
 [pipecost]: https://i.imgur.com/eFasIWn.png
 [kubecost]: https://i.imgur.com/1weQx8U.png 
-[cicd]: https://github.com/pet-clinic-team-3/pet-clinic/blob/feature-readme/images/pipeline.png
+[cicd]: https://i.imgur.com/WBnjgJT.png
 [pipeline]: https://i.imgur.com/2qq6Sg8.png
 [front]: https://i.imgur.com/LPE1ds4.png
 [back]: https://i.imgur.com/2poQ7ZR.png
