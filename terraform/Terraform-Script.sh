@@ -1,3 +1,9 @@
+#!/bin/bash
+
+SERVICE_PRINCIPAL=$1
+SERVICE_PRINCIPAL_SECRET=$2
+TENANT_ID=$3
+SUBSCRIPTION=$4
 
 ssh-keygen -t rsa -b 4096 -N ""  -q -f  ~/.ssh/id_rsa
 SSH_KEY=$(cat ~/.ssh/id_rsa.pub)
