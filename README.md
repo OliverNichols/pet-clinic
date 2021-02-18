@@ -1,4 +1,4 @@
-# pet-clinic   
+# Pet-clinic   
 ## Contents
 * [Introduction](#introduction) 
   * [Objective](#objective)
@@ -46,7 +46,14 @@ Kubernetes was used because Azure has it’s own managed Kubernetes services whi
 ## Architecture
 
 ### Risk Assessment
+
+This is our initial risk assessment created during our sprint planning meeting.
 ![risk][risk]
+
+This is our final risk assessment from near the end of the sprint.
+
+![risk2][risk2]
+
 ### Kanban Board
 
 For our Kanban board we used Trello to track our project and you can see our board below.
@@ -198,6 +205,7 @@ There are quite a few other improvements we can make in future sprints. The firs
 
 
 [risk]: https://i.imgur.com/3MGczIo.png
+[risk2]: https://i.imgur.com/L7gEkyK.png
 [kanban]: https://i.imgur.com/6FfuU4t.png
 [burndown]: https://i.imgur.com/zZntHmh.png
 [bdtable]: https://i.imgur.com/5Jru4fm.png
