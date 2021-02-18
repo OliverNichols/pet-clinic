@@ -17,3 +17,7 @@ output "client_key" {
 output "host" {
     value = azurerm_kubernetes_cluster.main.kube_config.0.host
 }
+
+output "resource_group" {
+    value = azurerm_resource_group.main.name
+}
