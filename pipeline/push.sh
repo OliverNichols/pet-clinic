@@ -1,18 +1,22 @@
 #!/bin/bash
-# Assumes image has been built as per ./build.sh
-# Need to have nexus-vm set up in /etc/hosts
+# Example usage - `bash ./push.sh -r docker.io/user -u user -p pass`
 
-image_repo="nexus-vm:8082" # ip or host name (e.g. docker.io)
-path_to_defaults="pipeline/nexus/config"
+# Environment variables with flag -r (image repo), -u (username, required), -p (password, required)
+while getopts r:u:p: opt; do case "${opt}" in
+r) image_repo=${OPTARG};;
+u) image_repo_usr=${OPTARG};; # required
+p) image_repo_psw=${OPTARG} # required
+esac done
 
-# Copy required configs and restart docker
-sudo cp $path_to_defaults/docker /etc/default/docker
-sudo cp $path_to_defaults/daemon.json /etc/docker/daemon.json
-sudo systemctl restart docker
+# Default values
+if [ -z $image_repo ]; then image_repo='docker.io/ollienichols'; fi
+path_to_defaults="pet-clinic/pipeline/nexus/config"
 
-# Login to nexus repo
-docker login -u admin -p password $image_repo
-docker login -u admin -p password $image_repo
+# Login to image repo
+docker login -u $image_repo_usr -p $image_repo_psw $image_repo
+
+# Build docker image
+docker build -t $image_repo/spring-petclinic-angular .
 
 # Push docker image
 docker push $image_repo/spring-petclinic-angular
