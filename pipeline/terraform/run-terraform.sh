@@ -42,7 +42,7 @@ terraform apply -var serviceprinciple_id=$SERVICE_PRINCIPAL \
 -var ssh_key="$SSH_KEY" \
 -auto-approve
 
-
+sudo az login --service-principal -u $SERVICE_PRINCIPAL -p $SERVICE_PRINCIPAL_SECRET --tenant $TENANT_ID
 sudo az aks get-credentials -n petclinic-aks -g petclinic-aks --overwrite-existing
 kubectl apply -f ../k8s
 
