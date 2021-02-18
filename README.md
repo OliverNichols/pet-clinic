@@ -7,6 +7,7 @@
   * [Risk Assessment](#risk-assessment)
   * [Kanban Board](#kanban-board)
   * [User stories](#user-stories)
+  * [Burndown](#Burndown)
 * [Infrastructure](#infrastructure)
   * [Pipeline](#pipeline)
 * [Footer](#footer)
@@ -63,6 +64,18 @@ We also have tags to show a tasks priority (Must, Should, Could, Won’t) as wel
 
 ### User stories
 
+### Burndown
+
+Here you can see our Burndown chart.
+
+![Burndown][burndown]
+
+The above shows the completion of tasks throughout the sprint as well as the effort of both tasks completed and work done measured relative to one another. It also shows the ideal completion rate or “burndown”  and the remaining tasks and effort for the sprint.
+
+Below you can see a table of the major tasks and their relative effort.
+
+![bdtable][bdtable]
+
 ## Infrastructure
 
 ### Pipeline
@@ -86,3 +99,5 @@ We also have tags to show a tasks priority (Must, Should, Could, Won’t) as wel
 
 [risk]: https://i.imgur.com/3MGczIo.png
 [kanban]: https://i.imgur.com/6FfuU4t.png
+[burndown]: https://i.imgur.com/zZntHmh.png
+[bdtable]: https://i.imgur.com/5Jru4fm.png
