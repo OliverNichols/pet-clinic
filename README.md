@@ -24,32 +24,40 @@ The objective for this group project was to deploy a spring petclinic applicatio
 
 Further requirements include:
 
-* Multiple environment support
-* Justify tool use
-* Show cost analysis
+* Environment-agnostic deployment
+* Justification for use of tools
+* Cost analysis
 
 
 ### Proposal
 
-Our approach to this project is to utilise the azure DevOps pipeline interfaced with a Github webhook for the repository for automated continuous integration and delivery. We use this pipeline to test the application using Karma, build and push it with Docker to Dockerhub, set up host configuration with Terraform and deploy it with Kubernetes. 
+Our approach to this project is to utilise the Azure DevOps Pipelines interfaced with a Github webhook for the repository for automated continuous integration and delivery. We use this pipeline to test the application using Karma, build and push it with Docker to Nexus, set up host configuration with Terraform and deploy it with Kubernetes. 
 
-The reason we decided on the DevOps pipeline was because our resources were created in azure and several az commands are required in our configuration and the azure DevOps pipeline is designed to be easily integrated with the azure portal. 
+The reason we decided on the Azure DevOps Pipelines was because our resources were created in Azure and several `az` commands are required in our configuration and the Azure DevOps Pipelines tool is designed to be easily integrated with the Azure Portal. 
 
-Karma was used simply because the applications tests were designed for it and while some reconfiguration within the applications scripts were required it was significantly easier and quicker than building new tests would have been.
+Karma was used simply because the application's tests were designed for it and, while some reconfiguration within the applications scripts were required, it was significantly more efficient to use Karma over building a new test structure.  
 
-Docker was used to build and push the application partly because of our familiarity with Docker and partly because the back end API was already stored in Docker hub and it would save time and effort to have both applications stored and containerised in the same manner.
+Docker was used to build and push the application. Similar to the choice of Karma, the application is already configured to work with Docker images so this choice would be much more efficient than alternatives.  
 
-The reason Terraform was selected was because it can do all the infrastructure on any cloud platform in one language. It is also really easy to make changes and it will let you know exactly what it will change which is extremely useful for such an experimental project.
+Terraform was selected because it can do all the infrastructure on any cloud platform in one language. It is also really easy to make changes to and will let you know exactly what it will change which is extremely useful for such an experimental project.
 
-Kubernetes was used because Azure has it’s own managed Kubernetes services which help configure and deploy our clusters. This combined with it’s functionality with Docker it’s easy scalability and it’s portability made it the ideal choice for the project.
+Kubernetes was used because Azure has its own managed Kubernetes services (AKS) which helps configure and deploy our clusters. This combined with its integratability with Docker, its easy scalability, and its portability made it the ideal choice for the project.
 
 ## Architecture
 
 ### Risk Assessment
+
+This is our initial risk assessment created during our sprint planning meeting.  
 ![risk][risk]
+
+This is our final risk assessment from near the end of the sprint.  
+![risk2][risk2]
+
+Noticeable changes include the addition of an evaluation for the risks, as well as some new and modified assessments.
+
 ### Kanban Board
 
-For our Kanban board we used Trello to track our project and you can see our board below.
+We used Trello as a Kanban Board in order to track our project, seen below.
 
 ![Kanban][kanban]
 
@@ -57,25 +65,25 @@ Here is the link to view our board: https://trello.com/b/Uq1lOfCr/group-project-
 
 The Trello board has the following sections:
 
-* Project resources- Links to parts of our projects and list of special team roles
-* User stories- What the user wants and why. This is used to not lose focus on why we have our tasks to help find solutions or alternatives when needed. Most user stories are tagged with this label but in other sections.
-* Backlog- Incomplete tasks and requirements.
-* Sprint backlog- Backlog for current sprint.
-* In progress- Tasks currently being worked on
-* Sprint 1 complete: Completed tasks
-* On hold- Tasks not to be completed for now but could be done in future.
- 
-We also have tags to show a tasks priority (Must, Should, Could, Won’t) as well as tags for the tasks type and the task owner. 
+* Project resources - Links to parts of our project and list of special team roles
+* User stories - What the users want and why. This is used to not lose focus of why we have our tasks to help find solutions or alternatives when needed. These user stories are treated the same as other requirements, and so are moved around during sprints (but are tagged with `User Story` label).
+* Backlog - Incomplete tasks and requirements.
+* Sprint Backlog - Backlog for current sprint.
+* In Progress - Tasks currently being worked on.
+* Sprint 1: Complete - Completed tasks in sprint 1.
+* On hold - Tasks not to be completed for now but could be done in future.
+
+Tasks have also been tagged using MSCW prioritisation (Must, Should, Could, Won’t), as well as tags for the task's type and the task's asignee. 
 
 ### Burndown
 
-Here you can see our Burndown chart.
+Here you can see our burn-down chart.
 
 ![Burndown][burndown]
 
-The above shows the completion of tasks throughout the sprint as well as the effort of both tasks completed and work done measured relative to one another. It also shows the ideal completion rate or “burndown”  and the remaining tasks and effort for the sprint.
+The above shows the completion of tasks throughout the sprint as well as the effort of both tasks completed and work done measured relative to one another. It also shows the ideal completion rate, or “burndown”,  and the remaining tasks and effort for the sprint.
 
-Below you can see a table of the major tasks and their relative effort.
+Below you can see a table of the major tasks and their relative effort.  
 
 ![bdtable][bdtable]
 
@@ -88,13 +96,21 @@ Below is a diagram of our CI/CD pipeline.
 
 ![cicd][cicd] 
 
-The development section at the top has dual representation. During this sprint the programming and refactoring section represents the changes made to our build solution and infrastructure which during the earlier stages would trigger a webhook when pushed to Github. In this case the Trello board is our board with the work for our solution which informs the work to be done and is updated as work is done. The other representation is for the developers working on the front end of the app as in our final build the webhook is now triggered on the application repo on Github when developers make changes to it and so their development would work in much the same way.
+The development section represents the workflow of the developers, rather than our own development environment related to the infrastrcture and not the app itself. As a developer pushes changes to the `dev` branch of the [application's repo](https://github.com/pet-clinic-team-3/spring-petclinic-angular) it will trigger a development version of the pipeline which has a variable IP address and some other configurations set up. If the developer pushes changes to the `main` branch of said repo then a production pipeline will trigger instead, eventually deploying onto the production environment.
 
-In both cases, the webhook triggers the pipeline build to begin.  There is a pipeline and webhook both for the development branch and main branch of the repository and as the diagram demonstrates the pipelines build to different environments hence the as-live and production servers. This allows developers to test the build in a separate environment before committing to the user facing one.
+This seperation allows developers to run dynamic tests on a development environment without risk of affecting the production environment - this was one of the requirements of the project.
 
-The first step is that all dependencies for the build are installed in the pipelines temporary environment so that it can perform the other steps without further installations. Next it runs unit tests on the application via a headless version of karma so that the tests are automated and displayed in the build terminal. Once all the tests pass the front end application is then built into an image via Docker and pushed to a secure private nexus repository.  Terraform is then used to configure the hosts for the deployment and due to the nature of Terraform only changes to the configuration are implemented meaning if there are little to no changes to the configuration this step will account for that and the step finishes very quickly. Finally Kubernetes is used to deploy both the front end application the developers would be working with along with the back end API it utilises that is stored on Dockerhub to an azure hosted cluster. With Kubernetes the scaling is automated by the azure host and no additional work needs to be done to account for changes in traffic.
+**Steps**
 
-Below you can see photos of the actual pipeline, the test results displayed in the pipeline and the application working after the pipeline build (the final image demonstrates it working in tandem with the backend. 
+Once all dependencies are installed, the following steps are followed:
+
+1. Testing: runs unit tests on the application via a headless version of karma so that the tests are automated and displayed in the build terminal.
+2. Build + Push: front-end application is built into an image via Docker and pushed to a secure private Nexus repository.
+3. Configuration: the resource group and kubernetes cluster are configured ready for deployment on the dev/prod environment.
+4. Deploy: both the front-end and back-end API of the application are deployed.  
+<br/>
+
+Below you can see photos of the actual pipeline, the test results displayed in the pipeline, and the application working after the pipeline build (the final image demonstrates it working in tandem with the back-end. 
 
 ![pipeline][pipeline]
 
@@ -106,9 +122,9 @@ Below you can see photos of the actual pipeline, the test results displayed in t
 
 In this section we will briefly discuss some of the improvements made throughout the sprint.
 
-The first change made for this project is switching our webhook to trigger on the application Github repository instead of our build. This meant that changes from the developers would trigger the webhook making it more realistic to the goals of the project. This also made the pipeline stages simpler as less directory changing is required with the application being the heart of the environment. Refactoring of our pipeline scripts were required to accommodate this change however the change has allowed for them to be made slightly simpler than the originals. 
+The first change made for this project is switching our webhook to trigger on the application's Github repository instead of our infrastructure repository. This meant that changes from the developers would trigger the webhook making it more realistic to the goals of the project. This also made the pipeline stages simpler as less directory changing is required with the application being the heart of the environment. Refactoring of our pipeline scripts were required to accommodate this change however the change has allowed for them to be made slightly simpler than the originals. 
 
-The next change was incorporating nexus into the project. Initially we used Dockerhub to store our images however Dockerhub repositories are typically public and additionally cannot be customised whereas nexus can. This did require significant refactoring for our Kubernetes setup as well as creating a nexus host but ultimately gave us more control over our repository and security making it an ideal change. 
+The next change was incorporating Nexus into the project. Initially we used DockerHub to store our images, however DockerHub repositories are typically public and additionally cannot be customised, whereas Nexus can. This did require significant refactoring for our Kubernetes setup as well as creating a Nexus host but ultimately gave us more control over our repository and security making it an ideal change. In order to get Nexus working with Kubernetes we did also have to set up a https connection using an SSL certificate which could potentially add costs to the user in the long-run (but would be free for at least a year, and is still relatively cheap).
 
 ## Cost analysis
 
@@ -167,22 +183,27 @@ During this sprint several temporary resource groups were up for days at a time 
 
 ## Evaluation
 
-For the evaluation we will discuss what we did well, what issues we had and we can do differently in the future. 
+For the evaluation we will discuss what we did well, what issues we had, and what we can do differently in the future. 
 
-Overall we believe the project went fairly well. Our work methodology seemed to prove effective with each of us focusing on building specific parts for the pipeline while coming together to problem solve whenever someone has a serious blocker. Due to the testing, building and pushing stages being the quickest to set up the 2 members of the group responsible had more freedom to aid the other team members on their sections after reaching the MVP for their sections allowing for an ideal balance of group support and individual focus. Our strong communication during stand ups and project further allowed us to have clear daily individual and group goals and an understanding of where everyone is with their work so we would know who may need assistance and who may be available to provide it.
+**Strength #1**  
+Overall we believe the project went fairly well. Our work methodology seemed to prove effective with each of us focusing on building specific parts for the pipeline while coming together to problem solve whenever someone has a serious blocker. Due to the testing, building and pushing stages being the quickest to set up the 2 members of the group responsible had more freedom to aid the other team members on their sections after reaching the MVP for their sections allowing for an ideal balance of group support and individual focus. Our strong communication during stand-ups and throughout the project further allowed us to have clear daily individual and group goals and an understanding of where everyone is with their work so we would know who may need assistance and who may be available to provide it.
 
-We also demonstrated strong of use of tools with which we had little to no familiarity. The Java application we deployed was not only a foreign application to us but a language most of the team was not familiar with. We were all able to utilise our tools with the application and some of us even made alterations to the Java scripts themselves to better integrate them with our DevOps technologies. As for the technologies we used, with the exception of Docker they were all tools we either had little or no experience with and yet we all utilised them to create an effective deployment.
+**Strength #2**  
+We also demonstrated strong of use of tools with which we had little-to-no familiarity. The Java application we deployed was not only a foreign application to us but a language most of the team was not familiar with. We were all able to utilise our tools with the application and some of us even made alterations to the Java scripts themselves to better integrate them with our DevOps technologies. As for the technologies we used, with the exception of Docker they were all tools we either had little or no experience with and yet we all utilised them to create an effective deployment.
 
+**Issue #1**  
 We did struggle however with some of our technologies. Integrating Kubernetes and Terraform into one step proved challenging and ultimately too time consuming so in the end we implemented them as separate pipeline steps working one after the other instead of in unison. This isn’t a huge issue as they both performed their roles but it does mean that the pipeline takes longer to build and more would need to be done to account for changes to one or the other. We had similar struggles with implementing Nexus but did eventually get it working with the project.
 
-A tool that was abandoned completely was Protractor which was to be used for end to end testing. This ultimately proved too troublesome to implement in this sprint and as such our end to end testing had to be done within our testing environment directly after the development pipeline builds which even though it would be prudent to test the application works properly upon each build, specifically testing integration functionality with the API each time does cost extra time between setting up the development pipeline and feeling confident in pushing to main.
+**Issue #2**  
+A tool that was abandoned completely was Protractor which was to be used for end-to-end testing. This ultimately proved too troublesome to implement in this sprint and as such our end-to-end testing had to be done within our testing environment directly after the development pipeline builds, even though it would be prudent to test the application works properly upon each build. Specifically, testing integration functionality with the API each time does cost extra time between setting up the development pipeline and feeling confident in pushing to main.
 
+**Issue #3**  
 Another issue we faced was in knowing when something was ready to integrate with the pipeline. For our Kubernetes and Terraform we tried to get them optimised before integrating into the pipeline which caused pressure on our time constraints. This is because we didn’t begin implementation until our last day causing worry we would not have a fully functional product by the end of the sprint. We should have began implementing them upon reaching an MVP so that we would have a fully functional pipeline before beginning optimisation which is definitely what we do in future. 
 
-There are quite a few other improvements we can make in future sprints. The first improvement would be implementing the end to end testing into pipeline to further automate the process. Something else we could’ve done differently is keep better track of our costs at the start of the project. While some of us did have budgets set to alert us of costs we were not deleting our resources in our temporary resource groups at the end of the day to save on costs and when we exceeded our budgets we did not set new ones to track future costs and did not often discuss strategies or plan to reduce our costs which will we have to do in future.
+**Improvements**  
+There are quite a few other improvements we can make in future sprints. The first improvement would be implementing the end-to-end testing into the pipelines to further automate the process. Something else we could’ve done differently is keeping better track of our costs at the start of the project. While some of us did have budgets set to alert us of costs we were not deleting our resources in our temporary resource groups at the end of the day to save on costs and when we exceeded our budgets we did not set new ones to track future costs and did not often discuss strategies or plan to reduce our costs which will we have to do in future.
 
 ## Footer
-
 
 ### Contributors
 - [Oliver Nichols](https://github.com/OliverNichols)  
@@ -198,6 +219,7 @@ There are quite a few other improvements we can make in future sprints. The firs
 
 
 [risk]: https://i.imgur.com/3MGczIo.png
+[risk2]: https://i.imgur.com/R4i43u7.png
 [kanban]: https://i.imgur.com/6FfuU4t.png
 [burndown]: https://i.imgur.com/zZntHmh.png
 [bdtable]: https://i.imgur.com/5Jru4fm.png
@@ -208,7 +230,7 @@ There are quite a few other improvements we can make in future sprints. The firs
 [terracost]: https://i.imgur.com/erN12NJ.png
 [pipecost]: https://i.imgur.com/eFasIWn.png
 [kubecost]: https://i.imgur.com/1weQx8U.png 
-[cicd]: https://github.com/pet-clinic-team-3/pet-clinic/blob/feature-readme/images/pipeline.png
+[cicd]: https://i.imgur.com/WBnjgJT.png
 [pipeline]: https://i.imgur.com/2qq6Sg8.png
 [front]: https://i.imgur.com/LPE1ds4.png
 [back]: https://i.imgur.com/2poQ7ZR.png
